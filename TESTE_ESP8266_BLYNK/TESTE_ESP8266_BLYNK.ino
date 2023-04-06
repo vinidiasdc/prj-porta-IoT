@@ -41,19 +41,19 @@ BLYNK_WRITE(V2) {
   tone(buzzer, value);
 }
 
-/* Definição das operações dos pinos, se é saída ou entrada*/
+/* Definição das operações dos pinos se é saída ou entrada*/
 void setup() {
   
   pinMode(D0, OUTPUT);
   pinMode(buzzer, OUTPUT);
   servo.attach(D1); // Atribuindo o pino D1 ao servo motor
   
-  Blynk.begin(auth, ssid, pass, "blynk.cloud", 80);
+  Blynk.begin(auth, ssid, pass, "blynk.cloud", 80); // Inicializando o Blynk com as configurações de Wifi
   
 }
 
 void loop() {
   
-  Blynk.run(); // Inicializando o blynk
+  Blynk.run(); // Executando o blynk
 
 }
