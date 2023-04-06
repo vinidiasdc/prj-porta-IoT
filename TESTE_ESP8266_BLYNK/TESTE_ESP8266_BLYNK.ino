@@ -44,7 +44,7 @@ BLYNK_WRITE(V2) {
 /* Definição das operações dos pinos se é saída ou entrada*/
 void setup() {
   
-  pinMode(D0, OUTPUT); // Indica que o pino do ESP8266 (D0) será de saída, ou seja, passaremos um valor para esse pino
+  pinMode(led, OUTPUT); // Indica que o pino do ESP8266 (D0) da variável (led) será de saída, ou seja, passaremos um valor para esse pino
   pinMode(buzzer, OUTPUT);
   servo.attach(D1); // Atribuindo o pino D1 ao servo motor
   
