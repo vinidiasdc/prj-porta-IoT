@@ -17,6 +17,3 @@ while station.isconnected() == False:
 
 print("Conexão bem-sucedida")
 print(station.ifconfig())
-
-
-
