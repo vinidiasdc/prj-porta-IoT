@@ -31,12 +31,20 @@ while True:
 
     if "GET /?servo=on" in request:
         if status == False:
-            GirarServo(90)
-            time.sleep(2)
+            for i in range(90, 115, 1):
+                GirarServo(i)
+                time.sleep_ms(10)
+
         status = True
         GirarServo(0)
+
+
     if "GET /?servo=off" in request:
         if status == True:
+            for i in range(115, 90, -1):
+                GirarServo(i)
+                time.sleep_ms(10)
+
             status = False
         GirarServo(0)
 
