@@ -7,13 +7,11 @@ s.bind(('', 80))
 s.listen(5)
 
 #Interagir com o ESP8266
-led = Pin(4, Pin.OUT)
-servo = PWM(Pin(5), freq=50)
-status = False
+servo = PWM(Pin(5), freq=50) # Pino 5 == D1
+estadoPorta = False
 
 def GirarServo(pulso):
     servo.duty(pulso)
-
 
 def web_page():
     file = open("index.html", "r")
@@ -27,25 +25,24 @@ while True:
     request = str(request)
     print(request)
 
-    #Requisição do Servo e Led
-
-    if "GET /?servo=on" in request:
-        if status == False:
-            for i in range(90, 115, 1):
+    #Requisição do Servo
+    if "GET /?servo=abrir" in request:
+        if estadoPorta == False:
+            for i in range(75, 115, 1):
                 GirarServo(i)
                 time.sleep_ms(10)
 
-        status = True
+        estadoPorta = True
         GirarServo(0)
 
-
-    if "GET /?servo=off" in request:
-        if status == True:
-            for i in range(115, 90, -1):
+    if "GET /?servo=fechar" in request:
+        if estadoPorta == True:
+            for i in range(40, 0, -1):
+                print(i)
                 GirarServo(i)
                 time.sleep_ms(10)
+            estadoPorta = False
 
-            status = False
         GirarServo(0)
 
     response = web_page()

@@ -3,8 +3,8 @@ import network, esp, gc
 gc.collect()
 esp.osdebug(None)
 
-ssid = "iPhone de Fabricio"
-password = "fabricio"
+ssid = "WANESSA OI FIBRA 2.4G"
+password = "wanejunior"
 
 station = network.WLAN(network.STA_IF)
 station.active(True)
