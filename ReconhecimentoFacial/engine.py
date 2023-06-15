@@ -1,22 +1,44 @@
 import face_recognition as fr
-
-def reconhecerFace(urlfoto):
-    foto = fr.load_image_file(urlfoto)
-    rostos = fr.face_encodings(foto)
-
-    if(len(rostos) > 0):
-        return True, rostos
-    else:
-        return False, []
+import datetime
+import cv2
+from conexao import CriarImagensPessoasAutorizadas, SalvarImagemNoBanco
     
-vinicius = reconhecerFace("vinicius.jpg")
-
-def consultar_rostos():
+def ConsultarRostosConhecidos():
+    qtdImagens = CriarImagensPessoasAutorizadas()
     rostos_conhecidos = []
-    nome_dos_rosotos = []
 
-    if(vinicius[0]):
-        rostos_conhecidos.append(vinicius[1][0])
-        nome_dos_rosotos.append("Vinicius")
+    for i in qtdImagens:
+        arquivo_imagem = f"imagem_user_{i}.jpg"
+        
+        foto = fr.load_image_file(arquivo_imagem)
+        encodeRosto = fr.face_encodings(foto)
 
-    return rostos_conhecidos, nome_dos_rosotos
+        if(len(encodeRosto) > 0):
+            rostos_conhecidos.append(encodeRosto[0])
+    
+    return rostos_conhecidos
+
+def CadastrarRostoAutorizado():
+    webcam = cv2.VideoCapture(0)
+    webcam.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
+    webcam.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
+
+    while True:
+        ret, frame = webcam.read()
+
+        cv2.imshow("camera", frame)
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    nome_arquivo = f"imagem_{timestamp}.jpg"
+
+    cv2.imwrite(nome_arquivo, frame)
+
+    SalvarImagemNoBanco(nome_arquivo)
+
+    webcam.release()
+    cv2.destroyAllWindows()
+
+

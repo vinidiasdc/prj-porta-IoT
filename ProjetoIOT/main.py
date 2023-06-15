@@ -9,10 +9,10 @@ s.listen(5)
 #Interagir com o ESP8266
 servo = PWM(Pin(5), freq=50) # Pino 5 == D1
 estadoPorta = False
-
 def GirarServo(pulso):
     servo.duty(pulso)
 
+#Criação do página no webserver
 def web_page():
     file = open("index.html", "r")
     page = file.read()

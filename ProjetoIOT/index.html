@@ -2,12 +2,59 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Servidor da Casa</title>
+    <title>ESP8266 - WebServer</title>
+    <style>
+        html {
+            height: 100%;
+
+        }
+        body{
+            height: 100%;
+            background-color: #75c0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #btn_abrir {
+            background-color: #39a275;
+            border: none;
+            border-radius: 20px 20px 20px;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #btn_fechar {
+            background-color: #df1c44;
+            border: none;
+            border-radius: 20px 20px 20px;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #btn_abrir:hover {
+            background-color: #35805f;
+            transition: 1s;
+        }
+
+        #btn_fechar:hover {
+            background-color: #9b0e2a;
+            transition: 1s;
+        }
+    </style>
 </head>
 <body>
-    <h1>Seja bem-vindo ao lar!!!</h1>
-    <p>Porta</p>
-    <button onclick="window.location.href = '/?servo=abrir'">Abrir</button>
-    <button onclick="window.location.href = '/?servo=fechar'">Fechar</button>
+    <button id="btn_abrir" onclick="window.location.href = '/?servo=abrir'">Abrir porta</button>
+    <button id="btn_fechar" onclick="window.location.href = '/?servo=fechar'">Fechar porta</button>
 </body>
 </html>
