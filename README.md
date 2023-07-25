@@ -12,7 +12,6 @@ Neste projeto iremos desenvolver um circuito de IoT capaz de abrir e trancar uma
   <li>✅ Instalar o MicroPython no módulo</li>
   <li>✅ Codificar em python o projeto</li>
   <li>✅ Buscar opções para a criação do aplicativo para controle - Blynk,Arduino IoT Cloud ou um Web Server</li>
-  <li>⏳ Realizar documentação do projeto</li>
   <li>✅ Simular projeto e estrutura do circuito no Fritzing</li>
 </ul>
 
